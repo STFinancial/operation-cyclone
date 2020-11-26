@@ -6,12 +6,12 @@ import engine.Move;
 public class KristenStrategy extends Strategy {
 
     @Override
-    Move getMove(Game game) {
+    public Move getMove(Game game) {
         return null;
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return "Kristen";
     }
 }

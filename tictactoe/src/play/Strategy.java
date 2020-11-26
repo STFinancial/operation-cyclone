@@ -3,7 +3,7 @@ package play;
 import engine.Game;
 import engine.Move;
 
-abstract class Strategy {
-    abstract Move getMove(Game game);
-    abstract String getName();
+public abstract class Strategy {
+    public abstract Move getMove(Game game);
+    public abstract String getName();
 }

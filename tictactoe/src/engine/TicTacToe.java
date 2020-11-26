@@ -1,8 +1,7 @@
-package play;
+package engine;
 
-import engine.Game;
-import engine.Move;
-import engine.Player;
+import play.ManualStrategy;
+import play.Strategy;
 
 import java.util.Scanner;
 

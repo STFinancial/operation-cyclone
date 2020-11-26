@@ -4,20 +4,20 @@ public class Game {
     private Board board;
     private Player currentTurn;
 
-    public Game() {
+    Game() {
         this.board = new Board();
         board.clearBoard();
         currentTurn = Player.X;
     }
 
-    public void startNewGame(Player startingPlayer) {
+    void startNewGame(Player startingPlayer) {
         this.currentTurn = startingPlayer;
         board.clearBoard();
     }
 
     // TODO: Should Move take Player and then we remove "currentTurn" from this class?
     /** Returns true if the spot we want to move is empty, otherwise return false */
-    public boolean makeMove(Move move) {
+    boolean makeMove(Move move) {
         if (move.getRow() > 2 || move.getRow() < 0) {
             return false;
         }

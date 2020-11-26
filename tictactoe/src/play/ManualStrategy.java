@@ -5,11 +5,11 @@ import engine.Move;
 
 import java.util.Scanner;
 
-final class ManualStrategy extends Strategy {
+public final class ManualStrategy extends Strategy {
     private Scanner scanner = new Scanner(System.in);
 
     @Override
-    Move getMove(Game game) {
+    public Move getMove(Game game) {
         System.out.print("Row: ");
         int row = scanner.nextInt();
         System.out.print("Column: ");
@@ -18,7 +18,7 @@ final class ManualStrategy extends Strategy {
     }
 
     @Override
-    String getName() {
+    public String getName() {
         return "Manual Strategy";
     }
 }
