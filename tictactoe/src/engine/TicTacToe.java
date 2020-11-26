@@ -2,6 +2,7 @@ package engine;
 
 import play.ManualStrategy;
 import play.Strategy;
+import play.TimStrategy;
 
 import java.util.Scanner;
 
@@ -10,13 +11,13 @@ public class TicTacToe {
 
     public static void main(String[] args) {
         TicTacToe t = new TicTacToe();
-        t.play(new ManualStrategy(), new ManualStrategy());
+        t.play(new TimStrategy(Player.X), new TimStrategy(Player.O));
     }
 
-    private void play(Strategy player1, Strategy player2) {
+    private void play(Strategy startingPlayer, Strategy player2) {
         Game game = new Game();
-        game.startNewGame(Player.X);
-        Strategy currentPlayer = player1;
+        game.startNewGame(startingPlayer.getPlayer());
+        Strategy currentPlayer = startingPlayer;
 
         while (!game.isGameOver()) {
             System.out.println(game);
@@ -27,10 +28,10 @@ public class TicTacToe {
                 continue;
             }
             System.out.println("Making move: " + nextMove);
-            if (currentPlayer == player1) {
+            if (currentPlayer == startingPlayer) {
                 currentPlayer = player2;
             } else {
-                currentPlayer = player1;
+                currentPlayer = startingPlayer;
             }
         }
         System.out.println(game);
