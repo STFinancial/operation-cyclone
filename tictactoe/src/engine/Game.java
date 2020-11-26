@@ -15,20 +15,32 @@ public class Game {
         board.clearBoard();
     }
 
-    // TODO: Should this take Player and then we remove "currentTurn" from this class?
+    // TODO: Should Move take Player and then we remove "currentTurn" from this class?
     /** Returns true if the spot we want to move is empty, otherwise return false */
-    public boolean makeMove(int row, int column) {
-        if (row > 2 || row < 0) {
+    public boolean makeMove(Move move) {
+        if (move.getRow() > 2 || move.getRow() < 0) {
             return false;
         }
-        if (column > 2 || column < 0) {
+        if (move.getColumn() > 2 || move.getColumn() < 0) {
             return false;
         }
-        if (!board.markPosition(row, column, currentTurn)) {
+        if (!board.markPosition(move.getRow(), move.getColumn(), currentTurn)) {
             return false;
         }
         currentTurn = currentTurn == Player.X ? Player.O : Player.X;
         return true;
+    }
+
+    /** Returns a 3x3 array containing null if position is empty, or Player if that position has been marked */
+    public Player[][] getBoardState() {
+        // TODO: If we're going to do this we might as well just use nulls in Board as well and copy the array
+        Player[][] state = new Player[3][3];
+        for (int row = 0; row < 3; ++row) {
+            for (int column = 0; column < 3; ++column) {
+                state[row][column] = board.get(row, column);
+            }
+        }
+        return state;
     }
 
     /** Returns true if there is a winner or if all spots have been marked, false otherwise */
